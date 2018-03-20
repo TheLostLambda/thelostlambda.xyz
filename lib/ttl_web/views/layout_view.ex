@@ -1,3 +1,3 @@
-defmodule TTLWeb.LayoutView do
-  use TTLWeb, :view
+defmodule TtlWeb.LayoutView do
+  use TtlWeb, :view
 end

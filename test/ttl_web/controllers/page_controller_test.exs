@@ -1,5 +1,5 @@
-defmodule TTLWeb.PageControllerTest do
-  use TTLWeb.ConnCase
+defmodule TtlWeb.PageControllerTest do
+  use TtlWeb.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get conn, "/"

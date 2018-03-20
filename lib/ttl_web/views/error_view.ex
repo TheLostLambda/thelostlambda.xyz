@@ -1,5 +1,5 @@
-defmodule TTLWeb.ErrorView do
-  use TTLWeb, :view
+defmodule TtlWeb.ErrorView do
+  use TtlWeb, :view
 
   def render("404.html", _assigns) do
     "Page not found"

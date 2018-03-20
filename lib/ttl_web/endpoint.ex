@@ -1,7 +1,7 @@
-defmodule TTLWeb.Endpoint do
+defmodule TtlWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :ttl
 
-  socket "/socket", TTLWeb.UserSocket
+  socket "/socket", TtlWeb.UserSocket
 
   # Serve at "/" the static files from "priv/static" directory.
   #
@@ -9,7 +9,7 @@ defmodule TTLWeb.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/", from: :ttl, gzip: false,
-    only: ~w(css fonts images js favicon.ico robots.txt)
+    only: ~w(css fonts images documents js favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
@@ -36,9 +36,9 @@ defmodule TTLWeb.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_ttl_key",
-    signing_salt: "93b3fqhS"
+    signing_salt: "1Gc0LgtQ"
 
-  plug TTLWeb.Router
+  plug TtlWeb.Router
 
   @doc """
   Callback invoked for dynamically configuring the endpoint.

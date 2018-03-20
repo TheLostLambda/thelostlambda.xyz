@@ -1,3 +1,3 @@
-defmodule TTLWeb.PageViewTest do
-  use TTLWeb.ConnCase, async: true
+defmodule TtlWeb.PageViewTest do
+  use TtlWeb.ConnCase, async: true
 end

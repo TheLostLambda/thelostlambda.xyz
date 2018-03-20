@@ -1,4 +1,4 @@
-defmodule TTLWeb.ErrorHelpers do
+defmodule TtlWeb.ErrorHelpers do
   @moduledoc """
   Conveniences for translating and building error messages.
   """
@@ -32,9 +32,9 @@ defmodule TTLWeb.ErrorHelpers do
     #     dgettext "errors", "is invalid"
     #
     if count = opts[:count] do
-      Gettext.dngettext(TTLWeb.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(TtlWeb.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(TTLWeb.Gettext, "errors", msg, opts)
+      Gettext.dgettext(TtlWeb.Gettext, "errors", msg, opts)
     end
   end
 end

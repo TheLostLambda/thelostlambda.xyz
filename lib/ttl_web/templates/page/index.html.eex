@@ -1,36 +1,20 @@
-<div class="jumbotron">
-  <h2><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h2>
-  <p class="lead">A productive web framework that<br />does not compromise speed and maintainability.</p>
+<div>
+  <h1>TheLostLambda — The Landing Page of Brooks J Rady
 </div>
 
-<div class="row marketing">
-  <div class="col-lg-6">
-    <h4>Resources</h4>
-    <ul>
-      <li>
-        <a href="http://phoenixframework.org/docs/overview">Guides</a>
-      </li>
-      <li>
-        <a href="https://hexdocs.pm/phoenix">Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
-      </li>
-    </ul>
-  </div>
+<img id="logo" src="<%= static_path(@conn, "/images/logo.png") %>"></img>
 
-  <div class="col-lg-6">
-    <h4>Help</h4>
-    <ul>
-      <li>
-        <a href="http://groups.google.com/group/phoenix-talk">Mailing list</a>
-      </li>
-      <li>
-        <a href="http://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on freenode IRC</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/elixirphoenix">@elixirphoenix</a>
-      </li>
-    </ul>
-  </div>
-</div>
+<p> Hi there! This page is super new, so it's neat you are here! I'm going to be fleshing this website out into a full-blown blog and project reposititory as time goes on.</p>
+<p> In the meantime, isn't that a neat logo? Made it myself! It's a combination of a pulsar from Conway's Game of Life and the circular structure of a DNA plasmid. It combines my biggest interests! Bioengineering and Computer Science.</p>
+<p> Hmm, while I am working on the rest of this page behind the scenes, how about you check out some neat links to some of my other stuff!</p>
+
+<h2>Computer Stuff:</h2>
+<p><a href="https://gitlab.com/TheLostLambda">GitLab (The Better GitHub)</a></p>
+<p><a href="https://github.com/TheLostLambda">GitHub (Actually Has More of My Stuff)</a></p>
+
+<h2>Miscellaneous Stuff:</h2>
+<p> You look like the kind of person who would like to see a CV! Let's see if I can get a PDF on here...</p>
+<p><a href="<%= static_path(@conn, "/documents/CV.pdf") %>">Curriculum Vitae</a></p>
+
+<p>Look forward to more neat things soon!</p>
+<p>Last Updated 2018.3.20 (00:42)</p>

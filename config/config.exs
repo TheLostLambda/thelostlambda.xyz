@@ -5,17 +5,12 @@
 # is restricted to this project.
 use Mix.Config
 
-# General application configuration
-config :ttl,
-  namespace: TTL,
-  ecto_repos: [TTL.Repo]
-
 # Configures the endpoint
-config :ttl, TTLWeb.Endpoint,
+config :ttl, TtlWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "ef7eejkmTf1EoxUrR4oxXOEBGbuEuQU+DAnOewX0wf/0R7xtHjdjmqvc8FRhDN47",
-  render_errors: [view: TTLWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: TTL.PubSub,
+  secret_key_base: "92UDOgsRgmYAfNk976j8SEyTMr/x0GEf75F72/0xVmUCwTFqzpNhib6WpooST6Ez",
+  render_errors: [view: TtlWeb.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: Ttl.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger

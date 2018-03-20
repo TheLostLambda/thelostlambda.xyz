@@ -1,5 +1,5 @@
-defmodule TTLWeb.Router do
-  use TTLWeb, :router
+defmodule TtlWeb.Router do
+  use TtlWeb, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -13,14 +13,14 @@ defmodule TTLWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", TTLWeb do
+  scope "/", TtlWeb do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", TTLWeb do
+  # scope "/api", TtlWeb do
   #   pipe_through :api
   # end
 end

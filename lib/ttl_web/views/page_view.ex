@@ -1,3 +1,3 @@
-defmodule TTLWeb.PageView do
-  use TTLWeb, :view
+defmodule TtlWeb.PageView do
+  use TtlWeb, :view
 end

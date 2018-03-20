@@ -8,13 +8,5 @@ use Mix.Config
 # file or create a script for recreating it, since it's
 # kept out of version control and might be hard to recover
 # or recreate for your teammates (or yourself later on).
-config :ttl, TTLWeb.Endpoint,
-  secret_key_base: "2gOW0+PjtPn+rcxTO1/ACmBiWbDGVLkTTZ+UINfp8xCnvy4Xrt6EOsoQEllvbX+V"
-
-# Configure your database
-config :ttl, TTL.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "ttl_prod",
-  pool_size: 15
+config :ttl, TtlWeb.Endpoint,
+  secret_key_base: "NTEcao7g2mxGzBO7WbjlDeA0imhLfLNefLslx3GCb0Rv86T/KuHw+5uDgxTtLd9K"

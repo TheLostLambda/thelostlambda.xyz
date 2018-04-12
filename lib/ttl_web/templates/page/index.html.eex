@@ -13,12 +13,11 @@
 <p><a href="https://github.com/TheLostLambda">GitHub (Actually Has More of My Stuff)</a></p>
 
 <h2>High School Capstone:</h2>
-<p><a href="<%= static_path(@conn, "/documents/HSCapstone.pdf") %>">Capstone Portfolio</a></p>
-<p><a href="<%= static_path(@conn, "/documents/CapstonePoster.pdf") %>">Capstone Poster</a></p>
+<p><a href="capstone/">See this page for more details!</a></p>
 
 <h2>Miscellaneous Stuff:</h2>
 <p> You look like the kind of person who would like to see a CV! Let's see if I can get a PDF on here...</p>
 <p><a href="<%= static_path(@conn, "/documents/CV.pdf") %>">Curriculum Vitae</a></p>
 
 <p>Look forward to more neat things soon!</p>
-<p>Last Updated 2018.4.9 (00:29)</p>
+<p>Last Updated 2018.4.12 (09:36)</p>

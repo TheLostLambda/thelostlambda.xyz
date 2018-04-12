@@ -8,3 +8,7 @@ body {
 #logo {
   padding: 2.5em
 }
+
+.left-align {
+  text-align: left;
+}

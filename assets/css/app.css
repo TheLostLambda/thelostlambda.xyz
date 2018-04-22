@@ -1,14 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Slab:600');
+
 /* This file is for your main application css. */
 body {
+  font-family: 'Josefin Slab', serif;
+  font-size: 1.4em;
   text-align: center;
   background-color: hsla(0, 0%, 15%, 1);
-  color: hsla(0, 0%, 40%, 1)
+  color: hsla(0, 0%, 40%, 1);
 }
 
 #logo {
-  padding: 2.5em
+  padding: 2.5em;
 }
 
 .left-align {
   text-align: left;
+}
+
+a {
+  text-decoration: none;
+  color: #7AC74C;
 }

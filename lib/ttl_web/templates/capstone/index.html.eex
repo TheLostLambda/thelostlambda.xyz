@@ -6,4 +6,5 @@
 <p>The <a href="<%= static_path(@conn, "/documents/HSCapstone.pdf") %>">Capstone Portfolio</a> is a written document that contains a bird's-eye view of the Capstone project. It isn't specific to the research component; rather, it documents everything from college essays to my CV.</p>
 <p>This <a href="<%= static_path(@conn, "/documents/CapstonePoster.pdf") %>">Capstone Poster</a> is much more specific to the actual project component of my senior Capstone and contains much more detail on how my experiment is designed.</p>
 <p>Here is my <a href="<%= static_path(@conn, "/documents/Materials&Methods.pdf") %>">Materials & Methods</a> which includes links to other procedures used for the the more technical steps like transformation and the plasmid digests.</p>
+<p>If you are curious about the design of my genetic components, here are my <a href="<%= static_path(@conn, "/documents/Plasmids&Oligos.pdf") %>">Plasmids & Oligos</a>. There you will find the complete sequences of all my plasmids, inserts, and oligos.</p>
 </div>

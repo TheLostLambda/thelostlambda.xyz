@@ -12,16 +12,16 @@
   </head>
 
   <body>
-    <div>
-      <h1>TheLostLambda — The Landing Page of Brooks J Rady
-    </div>
-
-    <a href="../"><img id="logo" src="<%= static_path(@conn, "/images/logo.png") %>"></img></a>
-
+    <header>
+      <a href="../"><img id="logo" src="<%= static_path(@conn, "/images/logo.png") %>"></img></a>
+      <h1>TheLostLambda</h>
+    </header>
     <%= render @view_module, @view_template, assigns %>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
-    
-    <p>Look forward to more neat things soon!</p>
-    <a href="https://gitlab.com/TheLostLambda/thelostlambda.xyz"><p>Last Updated 2018.4.21 (19:33)</p></a>
+
+    <footer>
+      <p>Look forward to more neat things soon!</p>
+      <a href="https://gitlab.com/TheLostLambda/thelostlambda.xyz"><p>Last Updated 2018.4.21 (19:33)</p></a>
+    </footer>
   </body>
 </html>

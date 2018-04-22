@@ -7,10 +7,21 @@ body {
   text-align: center;
   background-color: hsla(0, 0%, 15%, 1);
   color: hsla(0, 0%, 40%, 1);
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+header * {
+  display: inline;
+  vertical-align: middle;
 }
 
 #logo {
-  padding: 2.5em;
+  padding: 1em;
+  width: 5em;
+  height: 5em;
+  max-width: 300px;
+  max-height: 300px;
 }
 
 .left-align {

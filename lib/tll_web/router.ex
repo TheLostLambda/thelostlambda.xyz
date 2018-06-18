@@ -18,6 +18,7 @@ defmodule TllWeb.Router do
 
     get "/", PageController, :index
     get "/capstone", CapstoneController, :index
+    get "/photo", PhotoController, :index
   end
 
   # Other scopes may use custom stacks.

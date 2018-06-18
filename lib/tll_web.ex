@@ -1,12 +1,12 @@
-defmodule TtlWeb do
+defmodule TllWeb do
   @moduledoc """
   The entrypoint for defining your web interface, such
   as controllers, views, channels and so on.
 
   This can be used in your application as:
 
-      use TtlWeb, :controller
-      use TtlWeb, :view
+      use TllWeb, :controller
+      use TllWeb, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -19,17 +19,17 @@ defmodule TtlWeb do
 
   def controller do
     quote do
-      use Phoenix.Controller, namespace: TtlWeb
+      use Phoenix.Controller, namespace: TllWeb
       import Plug.Conn
-      import TtlWeb.Router.Helpers
-      import TtlWeb.Gettext
+      import TllWeb.Router.Helpers
+      import TllWeb.Gettext
     end
   end
 
   def view do
     quote do
-      use Phoenix.View, root: "lib/ttl_web/templates",
-                        namespace: TtlWeb
+      use Phoenix.View, root: "lib/tll_web/templates",
+                        namespace: TllWeb
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_flash: 2, view_module: 1]
@@ -37,9 +37,9 @@ defmodule TtlWeb do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import TtlWeb.Router.Helpers
-      import TtlWeb.ErrorHelpers
-      import TtlWeb.Gettext
+      import TllWeb.Router.Helpers
+      import TllWeb.ErrorHelpers
+      import TllWeb.Gettext
     end
   end
 
@@ -54,7 +54,7 @@ defmodule TtlWeb do
   def channel do
     quote do
       use Phoenix.Channel
-      import TtlWeb.Gettext
+      import TllWeb.Gettext
     end
   end
 

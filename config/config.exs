@@ -6,11 +6,11 @@
 use Mix.Config
 
 # Configures the endpoint
-config :ttl, TtlWeb.Endpoint,
+config :tll, TllWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "92UDOgsRgmYAfNk976j8SEyTMr/x0GEf75F72/0xVmUCwTFqzpNhib6WpooST6Ez",
-  render_errors: [view: TtlWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Ttl.PubSub,
+  render_errors: [view: TllWeb.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: Tll.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger

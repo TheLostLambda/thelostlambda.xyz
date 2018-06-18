@@ -1,14 +1,14 @@
-defmodule TtlWeb.Endpoint do
-  use Phoenix.Endpoint, otp_app: :ttl
+defmodule TllWeb.Endpoint do
+  use Phoenix.Endpoint, otp_app: :tll
 
-  socket "/socket", TtlWeb.UserSocket
+  socket "/socket", TllWeb.UserSocket
 
   # Serve at "/" the static files from "priv/static" directory.
   #
   # You should set gzip to true if you are running phoenix.digest
   # when deploying your static files in production.
   plug Plug.Static,
-    at: "/", from: :ttl, gzip: false,
+    at: "/", from: :tll, gzip: false,
     only: ~w(css fonts images documents js favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
@@ -35,10 +35,10 @@ defmodule TtlWeb.Endpoint do
   # Set :encryption_salt if you would also like to encrypt it.
   plug Plug.Session,
     store: :cookie,
-    key: "_ttl_key",
+    key: "_tll_key",
     signing_salt: "1Gc0LgtQ"
 
-  plug TtlWeb.Router
+  plug TllWeb.Router
 
   @doc """
   Callback invoked for dynamically configuring the endpoint.

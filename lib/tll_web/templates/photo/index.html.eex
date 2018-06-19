@@ -1,28 +1,42 @@
-<p> Rather recently I decided that I would take up photography and bought a Nikon D3400 camera. I think that some of the photos I've taken turned out really well, so I'm plopping full quality copies here.</p>
-<p> Because I'm an open-source nut, I've done all of my edits in GIMP.</p>
+<p> Rather recently I decided that I would take up photography and bought a Nikon D3400 camera. I think that some of the photos I've taken turned out really well, so I'm plopping copies here.</p>
+<p> Because I'm an open-source nut, I've done all of my edits in GIMP. Be sure to click on the images to see the full resolution, this page contains only thumbnails. (Because loading dozens of megabytes of images at the same time turns out to be a bad idea...)</p>
 
 <div class="gallery">
   <div class="grid">
     <div class="cell">
-      <img src="<%= static_path(@conn, "/images/DSC_0102.JPG") %>" class="responsive-image">
+      <a href="<%= static_path(@conn, "/images/DSC_0102.JPG") %>">
+        <img src="<%= static_path(@conn, "/images/thumb/DSC_0102.JPG") %>" class="responsive-image">
+      </a>
     </div>
     <div class="cell">
-      <img src="<%= static_path(@conn, "/images/DSC_0146.JPG") %>" class="responsive-image">
+      <a href="<%= static_path(@conn, "/images/DSC_0146.JPG") %>">
+        <img src="<%= static_path(@conn, "/images/thumb/DSC_0146.JPG") %>" class="responsive-image">
+      </a>
     </div>
     <div class="cell">
-      <img src="<%= static_path(@conn, "/images/DSC_0158.JPG") %>" class="responsive-image">
+      <a href="<%= static_path(@conn, "/images/DSC_0158.JPG") %>">
+        <img src="<%= static_path(@conn, "/images/thumb/DSC_0158.JPG") %>" class="responsive-image">
+      </a>
     </div>
     <div class="cell">
-      <img src="<%= static_path(@conn, "/images/DSC_0245.JPG") %>" class="responsive-image">
+      <a href="<%= static_path(@conn, "/images/DSC_0245.JPG") %>">
+        <img src="<%= static_path(@conn, "/images/thumb/DSC_0245.JPG") %>" class="responsive-image">
+      </a>
     </div>
     <div class="cell">
-      <img src="<%= static_path(@conn, "/images/DSC_0740.JPG") %>" class="responsive-image">
+      <a href="<%= static_path(@conn, "/images/DSC_0740.JPG") %>">
+        <img src="<%= static_path(@conn, "/images/thumb/DSC_0740.JPG") %>" class="responsive-image">
+      </a>
     </div>
     <div class="cell">
-      <img src="<%= static_path(@conn, "/images/DSC_0888_Isolation_Saturation_Vignette.png") %>" class="responsive-image">
+      <a href="<%= static_path(@conn, "/images/DSC_0888_Isolation_Saturation_Vignette.png") %>">
+        <img src="<%= static_path(@conn, "/images/thumb/DSC_0888_Isolation_Saturation_Vignette.JPG") %>" class="responsive-image">
+      </a>
     </div>
     <div class="cell">
-      <img src="<%= static_path(@conn, "/images/DSC_0895.JPG") %>" class="responsive-image">
+      <a href="<%= static_path(@conn, "/images/DSC_0895.JPG") %>">
+        <img src="<%= static_path(@conn, "/images/thumb/DSC_0895.JPG") %>" class="responsive-image">
+      </a>
     </div>
   </div>
 </div>

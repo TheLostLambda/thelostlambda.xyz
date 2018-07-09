@@ -48,5 +48,20 @@
         <img src="<%= static_path(@conn, "/images/thumb/DSC_0139.JPG") %>" class="responsive-image">
       </a>
     </div>
+    <div class="cell">
+      <a href="<%= static_path(@conn, "/images/DSC_0546.JPG") %>">
+        <img src="<%= static_path(@conn, "/images/thumb/DSC_0546.JPG") %>" class="responsive-image">
+      </a>
+    </div>
+    <div class="cell">
+      <a href="<%= static_path(@conn, "/images/DSC_0754.JPG") %>">
+        <img src="<%= static_path(@conn, "/images/thumb/DSC_0754.JPG") %>" class="responsive-image">
+      </a>
+    </div>
+    <div class="cell">
+      <a href="<%= static_path(@conn, "/images/DSC_0854.JPG") %>">
+        <img src="<%= static_path(@conn, "/images/thumb/DSC_0854.JPG") %>" class="responsive-image">
+      </a>
+    </div>
   </div>
 </div>

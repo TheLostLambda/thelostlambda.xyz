@@ -33,32 +33,27 @@ a {
   color: #7AC74C;
 }
 
-.gallery {
+#gallery {
   margin: 0 auto;
   padding: 0 1em;
+  column-gap: 0.3em;
 }
 
 .responsive-image {
-  max-width: 100%;
+  line-height: 0;
+  vertical-align: top;
 }
 
-.cell img {
-  display: block;
+.responsive-image img {
   width: 100%;
-}
-
-.cell {
-  margin: 0.25em;
+  height: auto;
+  margin: 0.150em;
+  line-height: 0;
 }
 
 @media screen and (min-width: 1000px) {
-  .grid {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-  }
-  .cell {
-    width: calc(33.3333% - 0.5em);
+  #gallery {
+    column-count: 3;
   }
 }
 

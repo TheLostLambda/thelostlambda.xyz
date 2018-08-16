@@ -17,7 +17,7 @@
   <a href="<%= static_path(@conn, "/images/DSC_0740.JPG") %>" class="responsive-image">
     <img src="<%= static_path(@conn, "/images/thumb/DSC_0740.JPG") %>">
   </a>
-  <a href="<%= static_path(@conn, "/images/DSC_0888_Isolation_Saturation_Vignette.png") %>" class="responsive-image">
+  <a href="<%= static_path(@conn, "/images/DSC_0888_Isolation_Saturation_Vignette.png") %>" >
     <img src="<%= static_path(@conn, "/images/thumb/DSC_0888_Isolation_Saturation_Vignette.JPG") %>">
   </a>
   <a href="<%= static_path(@conn, "/images/DSC_0895.JPG") %>" class="responsive-image">
@@ -67,6 +67,30 @@
   </a>
   <a href="<%= static_path(@conn, "/images/DSC_0012.JPG") %>" class="responsive-image">
     <img src="<%= static_path(@conn, "/images/thumb/DSC_0012.JPG") %>">
+  </a>
+  <a href="<%= static_path(@conn, "/images/DSC_0061.JPG") %>" class="responsive-image">
+    <img src="<%= static_path(@conn, "/images/thumb/DSC_0061.JPG") %>">
+  </a>
+  <a href="<%= static_path(@conn, "/images/DSC_0044.JPG") %>" class="responsive-image">
+    <img src="<%= static_path(@conn, "/images/thumb/DSC_0044.JPG") %>">
+  </a>
+  <a href="<%= static_path(@conn, "/images/DSC_0229.JPG") %>" class="responsive-image">
+    <img src="<%= static_path(@conn, "/images/thumb/DSC_0229.JPG") %>">
+  </a>
+  <a href="<%= static_path(@conn, "/images/DSC_0030.JPG") %>" class="responsive-image">
+    <img src="<%= static_path(@conn, "/images/thumb/DSC_0030.JPG") %>">
+  </a>
+  <a href="<%= static_path(@conn, "/images/DSC_0078.JPG") %>" class="responsive-image">
+    <img src="<%= static_path(@conn, "/images/thumb/DSC_0078.JPG") %>">
+  </a>
+  <a href="<%= static_path(@conn, "/images/DSC_0096.JPG") %>" class="responsive-image">
+    <img src="<%= static_path(@conn, "/images/thumb/DSC_0096.JPG") %>">
+  </a>
+  <a href="<%= static_path(@conn, "/images/DSC_0043.JPG") %>" class="responsive-image">
+    <img src="<%= static_path(@conn, "/images/thumb/DSC_0043.JPG") %>">
+  </a>
+  <a href="<%= static_path(@conn, "/images/DSC_0031.JPG") %>" class="responsive-image">
+    <img src="<%= static_path(@conn, "/images/thumb/DSC_0031.JPG") %>">
   </a>
     </div>
   </div>

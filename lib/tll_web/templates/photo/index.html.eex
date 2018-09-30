@@ -17,7 +17,7 @@
   <a href="<%= static_path(@conn, "/images/DSC_0740.JPG") %>" class="responsive-image">
     <img src="<%= static_path(@conn, "/images/thumb/DSC_0740.JPG") %>">
   </a>
-  <a href="<%= static_path(@conn, "/images/DSC_0888_Isolation_Saturation_Vignette.png") %>" >
+  <a href="<%= static_path(@conn, "/images/DSC_0888_Isolation_Saturation_Vignette.png") %>" class="responsive-image">
     <img src="<%= static_path(@conn, "/images/thumb/DSC_0888_Isolation_Saturation_Vignette.JPG") %>">
   </a>
   <a href="<%= static_path(@conn, "/images/DSC_0895.JPG") %>" class="responsive-image">

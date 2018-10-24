@@ -5,6 +5,10 @@ first goal is just to reach feature pairity with the Phoenix version. After we
 get to that point, support for blogging, photo upload, and an improved interface
 are targets.
 
+## Comments
+As the purpose for this rewrite is largely didactic, all code should be
+extensively commented.
+
 ## Libraries & Stack
   - Stack
   - GHC

@@ -1,11 +1,12 @@
 module Main where
 
 -- Imports
+import Network.Socket.ByteString (recv, sendAll)
+import Network.Socket hiding (recv, sendAll)
+import Data.ByteString.Char8 (pack, unpack)
 import Control.Concurrent (forkFinally)
-import Network.Socket.ByteString (recv)
 import Control.Monad (forever, unless)
 import qualified Data.ByteString as BS
-import Network.Socket hiding (recv)
 import Control.Exception (bracket)
 import HTTP
 
@@ -74,7 +75,9 @@ main = do
       msg <- recv conn 1024
       -- Continue calling talk until there is no more data to read
       unless (BS.null msg) $ do
-        -- Echo the message!
-        BS.putStr msg
+        -- Read an HTML file as a ByteString
+        msg <- BS.readFile "index.html"
+        -- Send back an HTTP response!
+        sendAll conn . pack . show . html $ msg
         -- Recurse until there is nothing more to be read
         talk conn

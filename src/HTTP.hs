@@ -2,8 +2,8 @@
 module HTTP where
 
 -- Imports
-import qualified Data.ByteString.Lazy as BS
-import Data.ByteString.Lazy (ByteString)
+import qualified Data.ByteString as BS
+import Data.ByteString (ByteString)
 import Data.Char (chr)
 
 -- This is a simple Enum type for encapsulating the various HTTP request methods
@@ -36,10 +36,23 @@ instance Show Response where
                             ++ (decodeStatus s) ++ "\n"
                             ++ (concatMap showHeaders h) ++ "\n" ++ (bs2str b)
     where showHeaders (k,v) = k ++ ": " ++ v ++ "\n"
+          -- Convert a ByteString to Ints and then back to a string of chars.
           bs2str bs = map (chr . fromEnum) . BS.unpack $ bs
+
+-- A simple function for setting headers and values
+setHeader :: String -> String -> [Header] -> [Header]
+setHeader key value = (:) (key, value)
 
 -- Resolves status codes into status messages
 decodeStatus :: Int -> String
 decodeStatus 200 = "OK"
 decodeStatus 404 = "Not Found"
 decodeStatus 505 = "HTTP Version Not Supported"
+
+-- Create an HTTP response that returns an HTML document
+html :: ByteString -> Response
+html body = Response 1.1 200 headers body
+  where headers = setHeader "Server" "TLL" .
+                  setHeader "Content-Length" (show $ BS.length body) .
+                  setHeader "Content-Type" "text/html" $ []
+                  

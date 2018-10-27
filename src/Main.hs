@@ -7,6 +7,7 @@ import Control.Monad (forever, unless)
 import qualified Data.ByteString as BS
 import Network.Socket hiding (recv)
 import Control.Exception (bracket)
+import HTTP
 
 -- This is the main function for the server
 main :: IO ()

@@ -15,8 +15,8 @@ import HTTP
 -- This is the main function for the server
 main :: IO ()
 main = do
-  -- Ask for an address with the port 3000
-  addr <- resolve 3000
+  -- Ask for an address with the port 4242
+  addr <- resolve 4242
   -- This function first acquires a socket resource with `(open addr)` and then
   -- calls `loop` on it. If at any point, an exception is raised, or the loop is
   -- exited, this function ensures that the socket will be closed

@@ -53,7 +53,7 @@ executable tll
                        Router
 
   -- LANGUAGE extensions used by modules in this package.
-  extensions:          OverloadedStrings,
+  default-extensions:  OverloadedStrings,
                        DuplicateRecordFields
 
   -- Other library packages from which modules are imported.

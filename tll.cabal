@@ -67,3 +67,5 @@ executable tll
   -- Base language which the package is written in.
   default-language:    Haskell2010
 
+  -- Flags that will be passed to the compiler.
+  ghc-options:         -Wall -O2 -threaded -with-rtsopts=-N

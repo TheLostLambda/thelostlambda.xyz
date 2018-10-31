@@ -2,8 +2,8 @@
 module HTTP where
 
 -- Imports
-import Data.ByteString.Char8 (pack, unpack)
 import qualified Data.ByteString as BS
+import Data.ByteString.Char8 (unpack)
 import Data.ByteString (ByteString)
 
 -- This is a simple Enum type for encapsulating the various HTTP request methods
@@ -40,10 +40,10 @@ data Response = Response { version :: Double,
 
 -- `Show` implementation for `Response` that converts to a proper HTTP string
 instance Show Response where
-  show (Response v s h b) = "HTTP/" ++ (show v) ++ " " ++ (show s) ++ " "
-                            ++ (decodeStatus s) ++ "\n"
-                            ++ (concatMap showHeaders h) ++ "\n" ++ (unpack b)
-    where showHeaders (k,v) = k ++ ": " ++ v ++ "\n"
+  show (Response v s h b) = "HTTP/" ++ show v ++ " " ++ show s ++ " "
+                            ++ decodeStatus s ++ "\n"
+                            ++ concatMap showHeaders h ++ "\n" ++ unpack b
+    where showHeaders (key,val) = key ++ ": " ++ val ++ "\n"
 
 -- A simple function for setting headers and values
 setHeader :: String -> String -> [Header] -> [Header]
@@ -54,12 +54,14 @@ decodeStatus :: Int -> String
 decodeStatus 200 = "OK"
 decodeStatus 404 = "Not Found"
 decodeStatus 505 = "HTTP Version Not Supported"
+decodeStatus _   = "Unknown Status Code"
 
--- Create an HTTP response that returns OK
-ok :: String -> ByteString -> Response
-ok mime body = Response 1.1 200 headers body
-  -- Here are some default headers that should make sense in most all cases
-  where headers = setHeader "Server" "TLL" .
-                  setHeader "Content-Length" (show $ BS.length body) .
-                  setHeader "Content-Type" mime $ []
-                  
+-- Take a mime type and body then return a set of sane, generic headers
+defaultHeaders :: String -> ByteString -> [Header]
+defaultHeaders m b = setHeader "Server" "TLL" .
+                     setHeader "Content-Length" (show $ BS.length b) .
+                     setHeader "Content-Type" m $ []
+
+-- Create an HTTP response with the given status code, mime type, and body
+respond :: Int -> String -> ByteString -> Response
+respond s m b = Response 1.1 s (defaultHeaders m b) b

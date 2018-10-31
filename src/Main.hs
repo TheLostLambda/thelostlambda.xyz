@@ -2,15 +2,14 @@ module Main where
 
 -- Imports
 import Network.Socket.ByteString (recv, sendAll)
-import Network.Socket hiding (recv, sendAll)
 import Data.ByteString.Char8 (pack, unpack)
 import Control.Concurrent (forkFinally)
-import Control.Monad (forever, unless)
 import qualified Data.ByteString as BS
 import Data.ByteString (ByteString)
+import Network.Socket hiding (recv)
 import Control.Exception (bracket)
+import Control.Monad (forever)
 import Router
-import HTTP
 
 -- This is the main function for the server
 main :: IO ()
@@ -77,7 +76,7 @@ main = do
       -- Get a kilobyte of data from the connection and store it as `block`
       block <- recv conn 1024
       -- Continue calling listen until there is no more data to read
-      if (BS.length block < 1024) then
+      if BS.length block < 1024 then
         -- Wrap the request in the `IO` monad and return it
         return (BS.append req block)
       else

@@ -14,3 +14,4 @@ extensively commented.
   - GHC
   - network (Network.Socket)
   - bytestring (Data.ByteString)
+  - directory (System.Directory)

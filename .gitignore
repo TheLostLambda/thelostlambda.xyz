@@ -1,3 +1,5 @@
+*~
+server.log
 dist
 dist-*
 cabal-dev

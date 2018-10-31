@@ -12,4 +12,5 @@ extensively commented.
 ## Libraries & Stack
   - Stack
   - GHC
-  - http-client (Network.HTTP.Client)
+  - network (Network.Socket)
+  - bytestring (Data.ByteString)

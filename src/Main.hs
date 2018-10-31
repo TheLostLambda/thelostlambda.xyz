@@ -7,7 +7,9 @@ import Data.ByteString.Char8 (pack, unpack)
 import Control.Concurrent (forkFinally)
 import Control.Monad (forever, unless)
 import qualified Data.ByteString as BS
+import Data.ByteString (ByteString)
 import Control.Exception (bracket)
+import Router
 import HTTP
 
 -- This is the main function for the server
@@ -57,27 +59,38 @@ main = do
       listen sock 5
       return sock
     -- Loop forever, accepting any pending connections and forwarding them to
-    -- the talk function in a seperate thread.
+    -- the listen function in a seperate thread.
     loop :: Socket -> IO ()
     loop sock = forever $ do
       -- Accepts a peer connection from the socket queue, returning a new
       -- socket connected to the peer and some information about the peer.
       (conn, peer) <- accept sock
-      putStrLn $ "Connection from " ++ show peer
-      -- In a new thread, call the talk function on the connected socket and,
+      -- Print that a connection has been established
+      putStrLn $ "\nConnection from " ++ show peer
+      -- In a new thread, call the listen function on the connected socket and,
       -- when the thread terminates, close the connection.
-      forkFinally (talk conn) (\_ -> close conn)
+      forkFinally (recvAll conn "" >>= talk conn) (\_ -> close conn)
     -- Read a kilobyte at a time from the client and echo it to stdout until
     -- there is no more data to be read.
-    talk :: Socket -> IO ()
-    talk conn = do
-      -- Get a kilobyte of data from the connection and store it in `msg`
-      msg <- recv conn 1024
-      -- Continue calling talk until there is no more data to read
-      unless (BS.null msg) $ do
-        -- Read an HTML file as a ByteString
-        msg <- BS.readFile "index.html"
-        -- Send back an HTTP response!
-        sendAll conn . pack . show . html $ msg
-        -- Recurse until there is nothing more to be read
-        talk conn
+    recvAll :: Socket -> ByteString -> IO ByteString
+    recvAll conn req = do
+      -- Get a kilobyte of data from the connection and store it as `block`
+      block <- recv conn 1024
+      -- Continue calling listen until there is no more data to read
+      if (BS.length block < 1024) then
+        -- Wrap the request in the `IO` monad and return it
+        return (BS.append req block)
+      else
+        -- Append this block and recurse
+        recvAll conn (BS.append req block)
+    -- Take the HTTP request read from `listen` and return an HTTP response
+    talk :: Socket -> ByteString -> IO ()
+    talk conn req = do
+      -- Parse the request
+      let request = read $ unpack req
+      -- Print the HTTP request for logging
+      print request
+      -- Resolve the request
+      resp <- route request
+      -- Return the requested resource
+      sendAll conn . pack $ show resp

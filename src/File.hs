@@ -8,7 +8,7 @@ import Data.Char (toLower)
 getFile :: FilePath -> FilePath
 getFile = reverse . takeWhile (/= '/') . reverse
 
--- This is a simple function that fetches the type of a file (as a `FilePath`)
+-- This is a simple function that fetches the type of a file
 getFileType :: FilePath -> String
 getFileType = map toLower . drop 1 . dropWhile (/= '.') . getFile
 

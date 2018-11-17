@@ -53,6 +53,7 @@ setHeader key value = (:) (key, value)
 decodeStatus :: Int -> String
 decodeStatus 200 = "OK"
 decodeStatus 404 = "Not Found"
+decodeStatus 501 = "Not Implemented"
 decodeStatus 505 = "HTTP Version Not Supported"
 decodeStatus _   = "Unknown Status Code"
 

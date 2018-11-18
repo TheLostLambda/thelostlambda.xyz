@@ -2,9 +2,11 @@
 module HTTP where
 
 -- Imports
+import Data.ByteString.Char8 (pack, unpack)
 import qualified Data.ByteString as BS
-import Data.ByteString.Char8 (unpack)
 import Data.ByteString (ByteString)
+import Data.Char (isSpace)
+import Util
 
 -- This is a simple Enum type for encapsulating the various HTTP request methods
 -- There are many more than these two, but I'm keeping things simple for now
@@ -29,8 +31,8 @@ instance Read Request where
     where m = read . head . words . head . lines $ str
           p = head . tail . words . head . lines $ str
           v = read . drop 5 . last . words . head . lines $ str
-          h = [] -- These last two aren't implemented yet
-          b = "" -- For simple get requests, they aren't vital
+          h = [] -- This isnt't implemented yet
+          b = pack . trim . unlines . dropWhile (not . all isSpace) . lines $ str
 
 -- This type encapsulates a HTTP response
 data Response = Response { version :: Double,

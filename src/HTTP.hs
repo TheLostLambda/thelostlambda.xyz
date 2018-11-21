@@ -8,13 +8,22 @@ import Data.ByteString (ByteString)
 import Data.Char (isSpace)
 import Util
 
+-- This contains the identification and version information for this server
+banner :: String
+banner = "TLL v0.1.1.0"
+
 -- This is a simple Enum type for encapsulating the various HTTP request methods
 -- There are many more than these two, but I'm keeping things simple for now
 data Method = GET | POST deriving (Show, Read)
 
 -- Just make it clear that this combination of types will be used to store
--- headers and their content. This is likely another temporary solution.
-type Header = (String, String)
+-- headers and their content. Also allow the derivation of instances.
+newtype Header = Header (String, String) deriving Show
+
+-- This `Read` instance allows the parsing of HTTP headers
+instance Read Header where
+  readsPrec _ str = [(Header (trim . eat $ str, trim . reverse . eat . reverse $ str), "")]
+    where eat = takeWhile (/= ':')
 
 -- This type encapsulates a HTTP request
 -- NOTE: `String` is almost certainly the wrong type for path, but it should
@@ -31,7 +40,7 @@ instance Read Request where
     where m = read . head . words . head . lines $ str
           p = head . tail . words . head . lines $ str
           v = read . drop 5 . last . words . head . lines $ str
-          h = [] -- This isnt't implemented yet
+          h = map read . takeWhile (not . all isSpace) . drop 1 . lines $ str
           b = pack . trim . unlines . dropWhile (not . all isSpace) . lines $ str
 
 -- This type encapsulates a HTTP response
@@ -44,12 +53,12 @@ data Response = Response { version :: Double,
 instance Show Response where
   show (Response v s h b) = "HTTP/" ++ show v ++ " " ++ show s ++ " "
                             ++ decodeStatus s ++ "\n"
-                            ++ concatMap showHeaders h ++ "\n" ++ unpack b
-    where showHeaders (key,val) = key ++ ": " ++ val ++ "\n"
+                            ++ concatMap showHeader h ++ "\n" ++ unpack b
+    where showHeader (Header (key,val)) = key ++ ": " ++ val ++ "\n"
 
 -- A simple function for setting headers and values
 setHeader :: String -> String -> [Header] -> [Header]
-setHeader key value = (:) (key, value)
+setHeader key value = (:) (Header (key, value))
 
 -- Resolves status codes into status messages
 decodeStatus :: Int -> String
@@ -61,7 +70,7 @@ decodeStatus _   = "Unknown Status Code"
 
 -- Take a mime type and body then return a set of sane, generic headers
 defaultHeaders :: String -> ByteString -> [Header]
-defaultHeaders m b = setHeader "Server" "TLL" .
+defaultHeaders m b = setHeader "Server" banner .
                      setHeader "Content-Length" (show $ BS.length b) .
                      setHeader "Content-Type" m $ []
 

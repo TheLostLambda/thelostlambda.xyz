@@ -8,10 +8,6 @@ import Data.ByteString (ByteString)
 import Data.Char (isSpace)
 import Util
 
--- This contains the identification and version information for this server
-banner :: String
-banner = "TLL v0.1.1.0"
-
 -- This is a simple Enum type for encapsulating the various HTTP request methods
 -- There are many more than these two, but I'm keeping things simple for now
 data Method = GET | POST deriving (Show, Read)
@@ -22,8 +18,9 @@ newtype Header = Header (String, String) deriving Show
 
 -- This `Read` instance allows the parsing of HTTP headers
 instance Read Header where
-  readsPrec _ str = [(Header (trim . eat $ str, trim . reverse . eat . reverse $ str), "")]
-    where eat = takeWhile (/= ':')
+  readsPrec _ str = [(Header (key, val), "")]
+    where key = trim . takeWhile (/= ':') $ str
+          val = trim . tail . dropWhile (/= ':') $ str
 
 -- This type encapsulates a HTTP request
 -- NOTE: `String` is almost certainly the wrong type for path, but it should
@@ -77,3 +74,9 @@ defaultHeaders m b = setHeader "Server" banner .
 -- Create an HTTP response with the given status code, mime type, and body
 respond :: Int -> String -> ByteString -> Response
 respond s m b = Response 1.1 s (defaultHeaders m b) b
+
+-- Takes a url-encoded form response and returns the key-value pairs
+urlToMap :: String -> [(String, String)]
+urlToMap = map (toKV . map urlDecode . split "=") . split "&"
+  where toKV (x:y:_) = (x,y)
+        toKV _ = undefined

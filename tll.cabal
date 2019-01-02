@@ -10,7 +10,7 @@ name:                tll
 -- PVP summary:      +-+------- breaking API changes
 --                   | | +----- non-breaking API additions
 --                   | | | +--- code changes with no API change
-version:             0.1.1.0
+version:             0.1.2.0
 
 -- A short (one-line) description of the package.
 synopsis:            The Wackest Website in the West
@@ -58,7 +58,7 @@ executable tll
                        DuplicateRecordFields
 
   -- Other library packages from which modules are imported.
-  build-depends:       base >=4.11 && <4.12,
+  build-depends:       base,
                        bytestring,
                        network,
                        directory

@@ -10,12 +10,20 @@ import Network.Socket hiding (recv)
 import Control.Exception (bracket)
 import Control.Monad (forever)
 import Router
+import Util
+
+-- The port used to listen for incoming connections
+listeningPort :: Integer
+listeningPort = 4242
 
 -- This is the main function for the server
 main :: IO ()
 main = do
-  -- Ask for an address with the port 4242
-  addr <- resolve 4242
+  -- Ask for an address with the specified port
+  addr <- resolve listeningPort
+  -- Print the server version and the listening address
+  putStrLn banner
+  putStrLn $ "Listening on " ++ show (addrAddress addr)
   -- This function first acquires a socket resource with `(open addr)` and then
   -- calls `loop` on it. If at any point, an exception is raised, or the loop is
   -- exited, this function ensures that the socket will be closed
@@ -69,8 +77,8 @@ main = do
       -- In a new thread, call the listen function on the connected socket and,
       -- when the thread terminates, close the connection.
       forkFinally (recvAll conn "" >>= talk conn) (\_ -> close conn)
-    -- Read a kilobyte at a time from the client and echo it to stdout until
-    -- there is no more data to be read.
+    -- Read a kilobyte at a time from the client concatenating them until there
+    -- is no more data to be read.
     recvAll :: Socket -> ByteString -> IO ByteString
     recvAll conn req = do
       -- Get a kilobyte of data from the connection and store it as `block`

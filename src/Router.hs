@@ -2,7 +2,8 @@
 module Router where
 
 -- Imports
-import System.Directory (doesFileExist)
+import Data.ByteString.Char8 (pack, unpack) -- Gross?
+import System.Directory (doesFileExist) -- Try to get rid of this at some point
 import qualified Data.ByteString as BS
 import HTTP
 import File
@@ -19,6 +20,7 @@ stat = "web/error/"
 -- an appropriate response. This function deals in the `IO` monad, so it is able
 -- to read and write files on the disk
 route :: Request -> IO Response
+-- Static files router
 route (Request GET fp _ _ _) = do
   -- Append the requested URL to the `root` path and, if the URL doesn't contain
   -- a file, default to `index.html`
@@ -31,5 +33,8 @@ route (Request GET fp _ _ _) = do
   else
     -- Otherwise, return 404 and an error page
     respond 404 "text/html" <$> BS.readFile (appendPath stat "404.html")
+-- POST request handlers
+route (Request POST "/post/" _ _ b) = return $
+  respond 200 (toMime "txt") (pack $ show b ++ "\n\n" ++ show (urlToMap $ unpack b))
 -- If all previous attempts at routing have failed, return 501 (Not Implemented)
 route _ = return $ respond 501 (toMime "") ""

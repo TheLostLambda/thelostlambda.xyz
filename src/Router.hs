@@ -39,22 +39,24 @@ route (Request GET fp _ _ _) = do
     -- If the file exists, return 200 and the requested resource
     case fileType of
       -- If it's HTML, wrap it in a theme
-      "text/html" -> respond 200 fileType <$> withTheme file theme
+      "text/html" -> respond 200 fileType <$> (withTheme theme =<< BS.readFile file)
       -- Otherwise just return the file
       _ -> respond 200 fileType <$> BS.readFile file
   else
     -- Otherwise, return 404 and an error page
-    respond 404 "text/html" <$> withTheme (appendPath stat "404.html") theme
+    respond 404 (toMime "html") <$> (withTheme theme =<< BS.readFile (appendPath stat "404.html"))
 -- POST request handlers
-route (Request POST "/post/" _ _ b) = return $
-  respond 200 (toMime "txt") (pack $ show b ++ "\n\n" ++ show (urlToMap $ unpack b))
+route (Request POST "/post" _ _ b) = do
+   -- Generate the path to the theme file
+  let theme = appendPath root "app.html"
+  file <- unpack <$> (BS.readFile $ appendPath root "/post/post.html")
+  respond 200 (toMime "html") <$> (withTheme theme . pack $ interpolate tmplStr (urlToMap $ unpack b) file)
 -- If all previous attempts at routing have failed, return 501 (Not Implemented)
 route _ = return $ respond 501 (toMime "") ""
 
 -- This function takes a page and wraps it in a common header and footer
 -- I need to make the interpolate function work on ByteStrings
-withTheme :: FilePath -> FilePath -> IO ByteString
-withTheme fp tp = do
-  file <- BS.readFile fp
+withTheme :: FilePath -> ByteString -> IO ByteString
+withTheme tp file = do
   theme <- BS.readFile tp
   return . pack . interpolate tmplStr [("BODY", unpack file)] . unpack $ theme

@@ -8,6 +8,7 @@ import qualified Data.ByteString as BS
 import Data.ByteString (ByteString)
 import Network.Socket hiding (recv)
 import Control.Exception (bracket)
+import System.IO (hFlush, stdout)
 import Control.Monad (forever)
 import Router
 import Util
@@ -24,6 +25,8 @@ main = do
   -- Print the server version and the listening address
   putStrLn banner
   putStrLn $ "Listening on " ++ show (addrAddress addr)
+  -- Immediately print this to the screen by flushing the buffer
+  hFlush stdout
   -- This function first acquires a socket resource with `(open addr)` and then
   -- calls `loop` on it. If at any point, an exception is raised, or the loop is
   -- exited, this function ensures that the socket will be closed

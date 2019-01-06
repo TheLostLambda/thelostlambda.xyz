@@ -11,6 +11,10 @@ import Numeric (readHex)
 banner :: String
 banner = "TLL v0.1.2.0"
 
+-- The pattern used to offset values for interpolation in HTML templates
+tmplStr :: String
+tmplStr = "##"
+
 -- This function trims whitespace from the beginning and end of strings
 trim :: String -> String
 trim = dropWhile isSpace . reverse . dropWhile isSpace . reverse
@@ -22,6 +26,11 @@ split sub str
   | otherwise = chop (length sub) . fromJust $ subIndex
   where chop len idx = (take idx str) : (split sub $ drop (idx + len) str)
         subIndex = findIndex (isPrefixOf sub) $ tails str
+
+-- Produces an interpolated string from a map of values
+-- Find a way to generalize the map values without extra quotes from show
+interpolate :: String -> [(String, String)] -> String -> String
+interpolate pat kvs = concatMap (\x -> (lookup x kvs) `orElse` x) . split pat
 
 -- Characters that require url-encoding
 urlChars :: [Char]
@@ -38,3 +47,8 @@ urlDecode = convert "" . map (\c -> if c == '+' then ' ' else c)
 -- Converts a percent encoded character back to ASCII
 urlToASCII :: String -> Char
 urlToASCII = chr . fst . head . readHex . filter isHexDigit
+
+-- Takes a Maybe and a default value to use if the Maybe is Nothing
+orElse :: Maybe a -> a -> a
+(Just v) `orElse` _ = v
+_ `orElse` v = v

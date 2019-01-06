@@ -19,6 +19,4 @@ extensively commented.
 ## TODO
   - Markdown to HTML for writing blog posts. The Markdown will be stored, and
   then converted and wrapped when the blog page is requested.
-  - Fix the sensitivity to forgetting trailing slashes in urls
-  - Add templating support
   - Comment everything better

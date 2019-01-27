@@ -72,8 +72,7 @@ footer {
 }
 
 #banner {
-    /*Fuck, this is nasty*/
-    filter: brightness(50%) sepia(100%) hue-rotate(51.6deg) saturate(255%) brightness(108%);
+    filter: brightness(55%);
 }
 
 .left-align {

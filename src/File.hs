@@ -29,14 +29,16 @@ isPath = (==) "" . getFile
 isRelative :: FilePath -> Bool
 isRelative = (/=) '/' . head
 
--- This function takes a file type and returns the proper mime type
-toMime :: String -> String
-toMime "css"  = "text/css"
-toMime "html" = "text/html"
-toMime "png"  = "image/png"
-toMime "jpeg" = "image/jpeg"
-toMime "jpg"  = "image/jpeg"
-toMime "txt"  = "text/plain"
-toMime "ico"  = "image/x-icon"
-toMime "pdf"  = "application/pdf"
-toMime _      = "application/octet-stream"
+-- This function takes a file type and returns the proper mime type and encoding
+toMime :: String -> (String, String)
+toMime "css"  = ("text/css", "")
+toMime "html" = ("text/html", "")
+toMime "png"  = ("image/png", "")
+toMime "jpeg" = ("image/jpeg", "")
+toMime "jpg"  = ("image/jpeg", "")
+toMime "txt"  = ("text/plain", "")
+toMime "ico"  = ("image/x-icon", "")
+toMime "svg"  = ("image/svg+xml", "")
+toMime "pdf"  = ("application/pdf", "")
+toMime "svgz" = ("image/svg+xml", "gzip")
+toMime _      = ("application/octet-stream", "")

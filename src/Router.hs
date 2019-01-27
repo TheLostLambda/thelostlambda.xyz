@@ -37,7 +37,7 @@ route (Request GET fp _ _ _) = do
   if exists then do
     let fileType = (toMime $ getFileType file)
     -- If the file exists, return 200 and the requested resource
-    case fileType of
+    case fst fileType of
       -- If it's HTML, wrap it in a theme
       "text/html" -> respond 200 fileType <$> (withTheme theme =<< BS.readFile file)
       -- Otherwise just return the file

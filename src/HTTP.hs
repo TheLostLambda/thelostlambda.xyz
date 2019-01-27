@@ -66,14 +66,16 @@ decodeStatus 505 = "HTTP Version Not Supported"
 decodeStatus _   = "Unknown Status Code"
 
 -- Take a mime type and body then return a set of sane, generic headers
-defaultHeaders :: String -> ByteString -> [Header]
-defaultHeaders m b = setHeader "Server" banner .
-                     setHeader "Content-Length" (show $ BS.length b) .
-                     setHeader "Content-Type" m $ []
+defaultHeaders :: String -> String -> ByteString -> [Header]
+defaultHeaders m e b =
+  setHeader "Server" banner .
+  setHeader "Content-Length" (show $ BS.length b) .
+  setHeader "Content-Type" m .
+  (if null e then id else setHeader "Content-Encoding" e) $ []
 
 -- Create an HTTP response with the given status code, mime type, and body
-respond :: Int -> String -> ByteString -> Response
-respond s m b = Response 1.1 s (defaultHeaders m b) b
+respond :: Int -> (String, String) -> ByteString -> Response
+respond s (m,e) b = Response 1.1 s (defaultHeaders m e b) b
 
 -- Takes a url-encoded form response and returns the key-value pairs
 urlToMap :: String -> [(String, String)]

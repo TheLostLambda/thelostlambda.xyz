@@ -79,8 +79,8 @@ footer {
     filter: brightness(55%);
 }
 
-.left-align {
-    text-align: left;
+.justify {
+    text-align: justify;
 }
 
 a {

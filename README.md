@@ -20,4 +20,3 @@ extensively commented.
   - Markdown to HTML for writing blog posts. The Markdown will be stored, and
   then converted and wrapped when the blog page is requested.
   - Comment everything better
-  - Add gzip compression support!

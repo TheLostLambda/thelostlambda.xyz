@@ -23,7 +23,7 @@ body {
     margin: 0.5rem;
     text-align: center;
     width: 80%;
-    flex: 1;
+    flex-grow: 1;
 }
 
 header {
@@ -71,7 +71,7 @@ footer {
 }
 
 #logo:hover {
-        /*Fuck, this is nasty*/
+    /*Fuck, this is nasty*/
     filter: brightness(50%) sepia(100%) hue-rotate(51.6deg) saturate(255%) brightness(108%);
 }
 
@@ -89,8 +89,6 @@ a {
 }
 
 #gallery {
-    margin: 0 auto;
-    padding: 0 1rem;
     column-gap: 0.3rem;
 }
 
@@ -106,9 +104,9 @@ a {
     line-height: 0;
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 720px) {
     #gallery {
-	column-count: 3;
+	column-count: 2;
     }
 }
 
@@ -121,5 +119,17 @@ a {
     }
     header {
 	flex-direction: column;
+    }
+}
+
+@media screen and (min-width: 1120px) {
+    #gallery {
+	column-count: 3;
+    }
+}
+
+@media screen and (min-width: 1520px) {
+    #gallery {
+	column-count: 4;
     }
 }

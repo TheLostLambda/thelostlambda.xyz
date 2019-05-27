@@ -2,9 +2,9 @@
 
 :root {
     --font-stack: 'Josefin Slab', serif;
-    --bg-color: hsla(0, 0%, 15%, 1);
-    --fg-color: hsla(0, 0%, 55%, 1);
-    --pa-color: #7AC74C;
+    --bg-color: #f5e3e0;
+    --fg-color: #32292f;
+    --pa-color: #6e7dab;
 }
 
 body {
@@ -17,6 +17,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+#filters {
+    height: 0;
 }
 
 #content {
@@ -70,13 +74,16 @@ footer {
     filter: brightness(15%);
 }
 
+#logo {
+    filter: url(#backgroundify);
+}
+
 #logo:hover {
-    /*Fuck, this is nasty*/
-    filter: brightness(50%) sepia(100%) hue-rotate(51.6deg) saturate(255%) brightness(108%);
+    filter: url(#accentify);
 }
 
 #banner {
-    filter: brightness(55%);
+    filter: url(#foregroundify);
 }
 
 .justify {

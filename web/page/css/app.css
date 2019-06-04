@@ -97,6 +97,7 @@ a {
 
 #gallery {
     column-gap: 0.3rem;
+    column-width: 300px;
 }
 
 .responsive-image {
@@ -111,12 +112,6 @@ a {
     line-height: 0;
 }
 
-@media screen and (min-width: 720px) {
-    #gallery {
-	column-count: 2;
-    }
-}
-
 @media screen and (max-width: 720px) {
     .separator {
 	display: none;
@@ -126,17 +121,5 @@ a {
     }
     header {
 	flex-direction: column;
-    }
-}
-
-@media screen and (min-width: 1120px) {
-    #gallery {
-	column-count: 3;
-    }
-}
-
-@media screen and (min-width: 1520px) {
-    #gallery {
-	column-count: 4;
     }
 }

@@ -71,10 +71,6 @@ footer {
     margin: 1rem 0;
     width: auto;
     height: 3rem;
-    filter: brightness(15%);
-}
-
-#logo {
     filter: url(#backgroundify);
 }
 
@@ -92,6 +88,7 @@ footer {
 
 a {
     text-decoration: none;
+    line-height: 0;
     color: var(--pa-color);
 }
 
@@ -113,13 +110,14 @@ a {
 }
 
 @media screen and (max-width: 720px) {
-    .separator {
+    .separator, a > h1 {
 	display: none;
-    }
-    .space {
-	display: none;
+        line-height: 0.5;
     }
     header {
-	flex-direction: column;
+        flex-flow: column wrap;
+    }
+    header:hover > a > h1 {
+        display: block;
     }
 }

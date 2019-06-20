@@ -22,6 +22,7 @@ extensively commented.
   - Comment everything better
 
 ## Misc
-I have no better place to put this, so for the time being, here is the command I've been using to create thumbnails for the full size photos on the photos page:```
+I have no better place to put this, so for the time being, here is the command I've been using to create thumbnails for the full size photos on the photos page:
+```
 mogrify -path ./thumb -sampling-factor 4:2:0 -strip -quality 85 -interlace Plane -colorspace RGB -thumbnail 100000@\> *.JPG
 ```

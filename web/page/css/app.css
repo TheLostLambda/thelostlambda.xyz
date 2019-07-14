@@ -25,6 +25,7 @@ body {
 
 #content {
     margin: 0.5rem;
+    margin-top: 4rem;
     text-align: center;
     width: 80%;
     flex-grow: 1;
@@ -33,13 +34,15 @@ body {
 header {
     min-height: 4rem;
     font-size: 1rem;
+    position: fixed;
+    top: 0px;
+    z-index: 1;
 }
 
-.navbar {
+.navbar, #links{
     background-color: var(--fg-color);
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
     width: 100%;
 }
 
@@ -47,8 +50,13 @@ header {
     color: var(--bg-color);
 }
 
+.blink {
+    transition: color 0.5s ease;
+}
+
 .blink:hover {
     color: var(--pa-color);
+    transition: color 0.05s ease;
 }
 
 footer {
@@ -67,15 +75,41 @@ footer {
     margin: 0 0.625rem;
 }
 
-#logo {
+.logo {
     margin: 1rem 0;
-    width: auto;
+    width: 3rem;
     height: 3rem;
+    position: relative;
+}
+    
+.logo > * {
+    width: inherit;
+    height: inherit;
+    transition: opacity 0.5s ease;
+}
+
+#logo-active {
+    filter: url(#accentify);
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+#logo-sleepy {
     filter: url(#backgroundify);
 }
 
-#logo:hover {
-    filter: url(#accentify);
+.logo:hover * {
+    transition: opacity 0.1s ease;
+}
+
+.logo:hover #logo-active {
+    opacity: 1;
+}
+
+.logo:hover #logo-sleepy {
+    opacity: 0;
 }
 
 #banner {
@@ -110,14 +144,28 @@ a {
 }
 
 @media screen and (max-width: 720px) {
-    .separator, a > h1 {
-	display: none;
+    .separator {
+        display: none;
+    }
+    #links > a > h1 {
         line-height: 0.5;
     }
-    header {
-        flex-flow: column wrap;
+    header, #links {
+        flex-flow: column;
     }
-    header:hover > a > h1 {
-        display: block;
+    #links {
+        height: 0;
+        overflow: hidden;
+        transition: height 0.5s ease;
+    }
+    header:hover > #links {
+        height: 16rem;
+    }
+    a > .logo {
+        transform: rotate(0deg);
+        transition: transform 0.5s ease;
+    }
+    header:hover > a > .logo {
+        transform: rotate(90deg);
     }
 }

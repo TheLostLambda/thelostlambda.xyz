@@ -9,6 +9,7 @@
     <title>TheLostLambda</title>
     <link rel=icon href="favicon.ico">
     <link rel="stylesheet" href="/css/app.css">
+    <script src="/js/app.js"></script>
   </head>
 
   <body>
@@ -45,15 +46,22 @@
     </svg>
     <header class="navbar">
       <div class="space"></div>
-      <a href="/"><img id="logo" src="/images/logo.svgz"></a>
-      <div class="separator"></div>
-      <a href="blog"><h1 class="blink">BLOG</h1></a>
-      <div class="separator"></div>
-      <a href="coding"><h1 class="blink">CODING</h1></a>
-      <div class="separator"></div>
-      <a href="photos"><h1 class="blink">PHOTOS</h1></a>
-      <div class="separator"></div>
-      <a href="projects"><h1 class="blink">PROJECTS</h1></a>
+      <a href="/">
+        <div class="logo">
+          <img id="logo-sleepy" src="/images/logo.svgz">
+          <img id="logo-active" src="/images/logo.svgz">
+        </div>
+      </a>
+      <div id="links">
+        <div class="separator"></div>
+        <a href="blog"><h1 class="blink">BLOG</h1></a>
+        <div class="separator"></div>
+        <a href="coding"><h1 class="blink">CODING</h1></a>
+        <div class="separator"></div>
+        <a href="photos"><h1 class="blink">PHOTOS</h1></a>
+        <div class="separator"></div>
+        <a href="projects"><h1 class="blink">PROJECTS</h1></a>
+      </div>
     </header>
     <div id="content">
       ##BODY##
@@ -62,7 +70,7 @@
       <p>Built From Scratch In Haskell</p>
       <a href="documents/CV.pdf"><p class="blink">Hire Me?</p></a>
       <a href="https://gitlab.com/TheLostLambda/thelostlambda.xyz"><p class="blink">Here Be Dragons</p></a>
-      <p>Last Updated 2019-06-19</p>
+      <p>Last Updated 2019-07-14</p>
     </footer>
 </body>
 </html>

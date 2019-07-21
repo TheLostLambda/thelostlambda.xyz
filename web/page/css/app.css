@@ -140,7 +140,16 @@ footer > * {
 }
 
 #jumbotron > h1 {
-    font-size: 7rem;
+    font-size: 8rem;
+}
+
+#splashes > * {
+    display: none;
+    font-size: 3rem;
+}
+
+#splashes > .show {
+    display: block;
 }
 
 #banner {

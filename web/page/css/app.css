@@ -148,8 +148,8 @@ footer > * {
     font-size: 3rem;
 }
 
-#splashes > .show {
-    display: block;
+#splashes > span {
+    display: inline;
 }
 
 #banner {

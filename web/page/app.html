@@ -15,13 +15,31 @@
   <body>
     <svg id="filters">
       <defs>
-        <filter id="accentify">
+        <filter id="paccentify">
           <feColorMatrix
             color-interpolation-filters="sRGB"
             type="matrix"
             values="0.43 0    0    0  0
                     0    0.49 0    0  0
                     0    0    0.67 0  0
+                    0    0    0    1  0 "/>
+        </filter>
+        <filter id="saccentify">
+          <feColorMatrix
+            color-interpolation-filters="sRGB"
+            type="matrix"
+            values="0.99 0    0    0  0
+                    0    0.47 0    0  0
+                    0    0    0.33 0  0
+                    0    0    0    1  0 "/>
+        </filter>
+        <filter id="taccentify">
+          <feColorMatrix
+            color-interpolation-filters="sRGB"
+            type="matrix"
+            values="0.30 0    0    0  0
+                    0    0.34 0    0  0
+                    0    0    0.38 0  0
                     0    0    0    1  0 "/>
         </filter>
         <filter id="foregroundify">
@@ -70,7 +88,7 @@
       <p>Built From Scratch In Haskell</p>
       <a href="documents/CV.pdf"><p class="blink">Hire Me?</p></a>
       <a href="https://gitlab.com/TheLostLambda/thelostlambda.xyz"><p class="blink">Here Be Dragons</p></a>
-      <p>Last Updated 2019-07-21</p>
+      <p>Last Updated 2019-08-02</p>
     </footer>
 </body>
 </html>

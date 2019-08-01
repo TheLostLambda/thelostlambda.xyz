@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Slab:600');
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono&display=swap');
 
 :root {
     --font-stack: 'Josefin Slab', serif;
+    --mono-font-stack: 'IBM Plex Mono', monospace;
     --bg-color: #f5e3e0;
     --fg-color: #32292f;
     --pa-color: #6e7dab;
@@ -62,8 +64,13 @@ header {
 }
 
 .blink:hover {
-    color: var(--pa-color);
+    color: var(--sa-color);
     transition: color 0.05s ease;
+}
+
+.lit {
+    color: var(--sa-color);
+    transition: none;
 }
 
 footer {
@@ -101,7 +108,7 @@ footer > * {
 }
 
 #logo-active {
-    filter: url(#accentify);
+    filter: url(#saccentify);
     position: absolute;
     top: 0;
     left: 0;
@@ -112,7 +119,7 @@ footer > * {
     filter: url(#backgroundify);
 }
 
-.logo:hover * {
+.logo:hover *{
     transition: opacity 0.1s ease;
 }
 
@@ -141,6 +148,14 @@ footer > * {
 
 #jumbotron > h1 {
     font-size: 8rem;
+    width: 80%;
+}
+
+#splashes {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 10%;
+    justify-content: center;
 }
 
 #splashes > * {
@@ -150,6 +165,14 @@ footer > * {
 
 #splashes > span {
     display: inline;
+    font-family: var(--mono-font-stack);
+    transition: color 1s linear; /*Play with the timing function*/
+    white-space: pre;
+}
+
+#splashes > span.hot {
+    transition: none;
+    color: var(--sa-color);
 }
 
 #banner {
@@ -195,8 +218,11 @@ footer > * {
 
 a {
     text-decoration: none;
-    line-height: 0;
     color: var(--pa-color);
+}
+
+header > a {
+    line-height: 0;
 }
 
 #gallery {
@@ -242,4 +268,14 @@ a {
     header:hover > a > .logo {
         transform: rotate(90deg);
     }
+    #jumbotron > h1 {
+        font-size: 4rem;
+    }
+    #splashes > * {
+        font-size: 2rem;
+    }
+    .left-sec > *, .right-sec > * {
+        width: 80%;
+        margin-left: 10%;
+    }   
 }

@@ -20,6 +20,7 @@ extensively commented.
   - Markdown to HTML for writing blog posts. The Markdown will be stored, and
   then converted and wrapped when the blog page is requested.
   - Comment everything better
+  - Fix the text size and wrap on the main page
 
 ## Misc
 I have no better place to put this, so for the time being, here is the command I've been using to create thumbnails for the full size photos on the photos page:

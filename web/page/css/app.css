@@ -147,7 +147,7 @@ footer > * {
 }
 
 #jumbotron > h1 {
-    font-size: 8rem;
+    font-size: 10vmin;
     width: 80%;
 }
 
@@ -160,7 +160,7 @@ footer > * {
 
 #splashes > * {
     display: none;
-    font-size: 3rem;
+    font-size: 3.75vmin;
 }
 
 #splashes > span {
@@ -267,12 +267,6 @@ header > a {
     }
     header:hover > a > .logo {
         transform: rotate(90deg);
-    }
-    #jumbotron > h1 {
-        font-size: 4rem;
-    }
-    #splashes > * {
-        font-size: 2rem;
     }
     .left-sec > *, .right-sec > * {
         width: 80%;

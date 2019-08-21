@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
     }
     document.getElementById('links').addEventListener("transitionend", awaitDropdown, true);
     whereAmI();
+    fixStyles();
 })
 
 function whereAmI() {
@@ -48,6 +49,16 @@ function whereAmI() {
             ln.querySelector('h1').classList.add('lit');
         }
     });
+}
+
+function fixStyles() {
+    var path = window.location.pathname;
+    console.log(path);
+    if (path == '/') {
+        var header = document.querySelector('header');
+        header.style.filter = 'none';
+        console.log(header);
+    }
 }
 
 function getNewSplash(old) {

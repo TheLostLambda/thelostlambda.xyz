@@ -6,7 +6,7 @@ import Data.ByteString.Char8 (pack, unpack)
 import Control.Concurrent (forkFinally)
 import qualified Data.ByteString as BS
 import Data.ByteString (ByteString)
-import Network.Socket hiding (recv)
+import Network.Socket
 import Control.Exception (bracket)
 import System.IO (hFlush, stdout)
 import Control.Monad (forever)

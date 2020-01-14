@@ -13,5 +13,5 @@ WORKDIR /root/
 COPY web web
 COPY --from=tll-build /tmp/tll .
 EXPOSE 4242
-VOLUME /var/log/tll/
-CMD ./tll 2>&1 | tee -a /var/log/tll/server.log  
+VOLUME /var/log/
+CMD ./tll 2>&1 | tee -a /var/log/tll.log

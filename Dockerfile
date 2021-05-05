@@ -1,4 +1,4 @@
-FROM haskell:8.8.1 AS tll-build
+FROM haskell:8.10.4 AS tll-build
 
 WORKDIR /usr/src/tll-build
 COPY tll.cabal .

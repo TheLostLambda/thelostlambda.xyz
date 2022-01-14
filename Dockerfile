@@ -1,4 +1,4 @@
-FROM haskell:8.10.4 AS tll-build
+FROM haskell:9.0.2 AS tll-build
 
 WORKDIR /usr/src/tll-build
 COPY tll.cabal .
@@ -8,7 +8,8 @@ RUN stack build --only-snapshot
 COPY src src
 RUN stack build --copy-bins --local-bin-path /tmp/
 
-FROM ubuntu:latest
+FROM debian:latest
+RUN apt-get update && apt-get upgrade && apt-get install libnuma1
 WORKDIR /root/
 COPY web web
 COPY --from=tll-build /tmp/tll .

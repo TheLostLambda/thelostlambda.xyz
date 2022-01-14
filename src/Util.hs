@@ -24,13 +24,13 @@ split :: String -> String -> [String]
 split sub str
   | isNothing subIndex = [str]
   | otherwise = chop (length sub) . fromJust $ subIndex
-  where chop len idx = (take idx str) : (split sub $ drop (idx + len) str)
+  where chop len idx = take idx str : split sub (drop (idx + len) str)
         subIndex = findIndex (isPrefixOf sub) $ tails str
 
 -- Produces an interpolated string from a map of values
 -- Find a way to generalize the map values without extra quotes from show
 interpolate :: String -> [(String, String)] -> String -> String
-interpolate pat kvs = concatMap (\x -> (lookup x kvs) `orElse` x) . split pat
+interpolate pat kvs = concatMap (\x -> lookup x kvs `orElse` x) . split pat
 
 -- Characters that require url-encoding
 urlChars :: [Char]

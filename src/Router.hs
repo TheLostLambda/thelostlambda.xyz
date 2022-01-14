@@ -35,7 +35,7 @@ route (Request GET fp _ _ _) = do
   -- Does it exist now?
   exists <- doesFileExist file
   if exists then do
-    let fileType = (toMime $ getFileType file)
+    let fileType = toMime $ getFileType file
     -- If the file exists, return 200 and the requested resource
     case fst fileType of
       -- If it's HTML, wrap it in a theme
@@ -49,7 +49,7 @@ route (Request GET fp _ _ _) = do
 route (Request POST "/post" _ _ b) = do
    -- Generate the path to the theme file
   let theme = appendPath root "app.html"
-  file <- unpack <$> (BS.readFile $ appendPath root "/post/post.html")
+  file <- unpack <$> BS.readFile (appendPath root "/post/post.html")
   respond 200 (toMime "html") <$> (withTheme theme . pack $ interpolate tmplStr (urlToMap $ unpack b) file)
 -- If all previous attempts at routing have failed, return 501 (Not Implemented)
 route _ = return $ respond 501 (toMime "") ""

@@ -19,7 +19,7 @@ synopsis:            The Wackest Website in the West
 -- description:
 
 -- URL for the project homepage or repository.
-homepage:            https://gitlab.com/TheLostLambda/thelostlambda.xyz
+homepage:            https://github.com/TheLostLambda/thelostlambda.xyz
 
 -- The license under which the package is released.
 license:             PublicDomain

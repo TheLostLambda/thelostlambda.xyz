@@ -8,8 +8,8 @@ RUN stack build --only-snapshot
 COPY src src
 RUN stack build --copy-bins --local-bin-path /tmp/
 
-FROM debian:latest
-RUN apt-get update && apt-get upgrade && apt-get install libnuma1
+FROM debian:13
+RUN apt-get update -y && apt-get upgrade -y && apt-get install -y libnuma1
 WORKDIR /root/
 COPY web web
 COPY --from=tll-build /tmp/tll .
